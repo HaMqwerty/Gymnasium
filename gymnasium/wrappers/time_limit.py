@@ -47,13 +47,13 @@ class TimeLimit(gym.Wrapper):
             if the number of steps elapsed >= max episode steps
 
         """
-        observation, reward, terminated, truncated, info = self.env.step(action)
+        observation, reward, terminated, info = self.env.step(action)
         self._elapsed_steps += 1
 
         if self._elapsed_steps >= self._max_episode_steps:
             truncated = True
 
-        return observation, reward, terminated, truncated, info
+        return observation, reward, terminated, info
 
     def reset(self, **kwargs):
         """Resets the environment with :param:`**kwargs` and sets the number of steps elapsed to zero.
